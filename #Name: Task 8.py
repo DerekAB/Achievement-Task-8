@@ -42,20 +42,38 @@ def speed(unit, number):
         return
     #converts from MPH to KPH and rounds to the nearest 2 decimal places
 
-decision = float(input("Would you like to convert temperature or speed: \n Temperature [1] \n Speed [2] \n"))
+while True:
+    try:
+        decision = float(input("Would you like to convert temperature or speed: \n Temperature [1] \n Speed [2] \n"))
+        if decision in range(3):
+            break
+    except ValueError:
+        pass
+    print('Please enter a valid value: ')
 
 #program starts here with asking the user if they want to convert a temperature or a speed
 
 if decision == 1:
     unit = input("What is the unit you are converting from? 'C' for Celcius or 'F' for Fahrenheit:  ").strip().lower()
-    number = int(input("What is the temperature?: "))
-    temperature(unit, number)
+    while  not(unit == 'c' or unit == 'f'):
+        unit = input('Please enter a valid value: ')
+    while True:
+        try:
+            number = int(input("What is the temperature?: "))
+            temperature(unit, number)
+            break
+        except ValueError:
+            pass
+        print('Invalid entry. Try again: ')
+    
     
 #if the user chooses to convert a temperature, the program will ask for which unit they are converting, and what the temperature is
 #it will then call the function to do the conversion and then print it for the user
 
 if decision == 2:
     unit = input("What is the unit you are converting from? 'KPH' for Kilometers Per Hour to Miles Per Hour, or 'MPH' for Miles Per Hour to Kilometers Per Hour: ").strip().lower()
+    while not(unit == 'kph' or unit == 'mph'): 
+        unit = input('Please enter a valid entry: ')
     number = float(input("What is the speed?: "))
     speed(unit, number)
     
