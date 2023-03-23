@@ -13,39 +13,40 @@
 
 def temperature(unit, number):
     global conversion 
-    if unit == 'c':
+    
+    if unit == 'kg':
         conversion = (number * 1.8) + 32
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' F')
+        print(str(roundedConversion) + ' kg')
         return True
     #converts the temperature from Celcius to Fahrenheit and rounds it to the nearest 2 decimal places
     
-    if unit == 'f':
+    if unit == 'lb':
         conversion = (number - 32) * 0.5556
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' C')
+        print(str(roundedConversion) + ' lbs')
         return True
     #converts the temperature given from Fahrenheit to Celcius and rounds it to the nearest 2 decimal places
         
 def speed(unit, number):
-    if unit == 'kph':
+    if unit == 'm':
         conversion = number / 1.609344
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' MPH')
+        print(str(roundedConversion) + ' m')
         return
     #converts from KPH to MPH and rounds to the nearest 2 decimal places
     
-    if unit == 'mph':
+    if unit == 'ft':
         conversion = number * 1.60934
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' KPH')
+        print(str(roundedConversion) + ' ft')
         return
     #converts from MPH to KPH and rounds to the nearest 2 decimal places
 
 while True:
     try:
-        decision = float(input("Would you like to convert temperature or speed: \n Temperature [1] \n Speed [2] \n"))
-        if decision in range(3):
+        decision = float(input("Would you like to convert weight or length: \n Weight [1] \n Length [2] \n"))
+        if decision in range(1, 3):
             break
     except ValueError:
         pass
@@ -54,28 +55,34 @@ while True:
 #program starts here with asking the user if they want to convert a temperature or a speed
 
 if decision == 1:
-    unit = input("What is the unit you are converting from? 'C' for Celcius or 'F' for Fahrenheit:  ").strip().lower()
-    while  not(unit == 'c' or unit == 'f'):
+    unit = input("What is the unit you are converting from? 'KG' for for Kilograms or 'LB' for Pounds:  ").strip().lower()
+    while  not(unit == 'kg' or unit == 'lb'):
         unit = input('Please enter a valid value: ')
     while True:
         try:
-            number = int(input("What is the temperature?: "))
+            number = float(input("What is the Weight?: "))
             temperature(unit, number)
             break
         except ValueError:
-            pass
-        print('Invalid entry. Try again: ')
+            print('Invalid entry. Try again: ')
+        
     
     
 #if the user chooses to convert a temperature, the program will ask for which unit they are converting, and what the temperature is
 #it will then call the function to do the conversion and then print it for the user
 
 if decision == 2:
-    unit = input("What is the unit you are converting from? 'KPH' for Kilometers Per Hour to Miles Per Hour, or 'MPH' for Miles Per Hour to Kilometers Per Hour: ").strip().lower()
-    while not(unit == 'kph' or unit == 'mph'): 
+    unit = input("What is the unit you are converting from? 'M' for Meters, or 'FT' for Feet: ").strip().lower()
+    while not(unit == 'm' or unit == 'ft'): 
         unit = input('Please enter a valid entry: ')
-    number = float(input("What is the speed?: "))
-    speed(unit, number)
+    while True:
+        try: 
+            number = float(input("What is the length?: "))
+            speed(unit, number)
+            break
+        except ValueError:
+            print('Please enter a valid value: ')
+        
     
 #if the user chooses to convert a speed, the program will ask for which unit they are converting and what the speed is. 
 #it will then call the function to do the conversion and then print it for the user
