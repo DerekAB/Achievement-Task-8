@@ -15,31 +15,31 @@ def temperature(unit, number):
     global conversion 
     
     if unit == 'kg':
-        conversion = (number * 1.8) + 32
+        conversion = number * 2.2
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' kg')
+        print(str(roundedConversion) + ' lbs')
         return True
     #converts the temperature from Celcius to Fahrenheit and rounds it to the nearest 2 decimal places
     
     if unit == 'lb':
-        conversion = (number - 32) * 0.5556
+        conversion = number / 2.2
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' lbs')
+        print(str(roundedConversion) + ' kg')
         return True
     #converts the temperature given from Fahrenheit to Celcius and rounds it to the nearest 2 decimal places
         
 def speed(unit, number):
     if unit == 'm':
-        conversion = number / 1.609344
+        conversion = number * 3.281
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' m')
+        print(str(roundedConversion) + ' ft')
         return
     #converts from KPH to MPH and rounds to the nearest 2 decimal places
     
     if unit == 'ft':
-        conversion = number * 1.60934
+        conversion = number * 0.304
         roundedConversion = round(conversion, 2)
-        print(str(roundedConversion) + ' ft')
+        print(str(roundedConversion) + ' m')
         return
     #converts from MPH to KPH and rounds to the nearest 2 decimal places
 
@@ -55,12 +55,14 @@ while True:
 #program starts here with asking the user if they want to convert a temperature or a speed
 
 if decision == 1:
-    unit = input("What is the unit you are converting from? 'KG' for for Kilograms or 'LB' for Pounds:  ").strip().lower()
+    unit = input("What is the unit you are converting from? 'KG' for Kilograms or 'LB' for Pounds:  ").strip().lower()
     while  not(unit == 'kg' or unit == 'lb'):
         unit = input('Please enter a valid value: ')
     while True:
         try:
             number = float(input("What is the Weight?: "))
+            while number <= 0:
+                number = float(input('Number cannot be zero. Please enter a valid value: '))
             temperature(unit, number)
             break
         except ValueError:
@@ -78,6 +80,8 @@ if decision == 2:
     while True:
         try: 
             number = float(input("What is the length?: "))
+            while number <= 0:
+                number = float(input('Number cannot be zero. Please enter a valid value: '))
             speed(unit, number)
             break
         except ValueError:
