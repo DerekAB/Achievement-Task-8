@@ -5,11 +5,11 @@
 #
 #Purpose:
 #
-#The purpose of this program is to convert temperature and speed
+#The purpose of this program is to convert weight and length
 #into the desired unit. The program will first ask if they want
 #to convert speed or temperature, then ask if they want to convert
-#from Celcius to Fahrenheit or vice versa, or if they want to 
-#from KPH to MPH or vice versa.
+#from Kilograms to Pounds or vice versa, or if they want to 
+#from Feet to Meters or vice versa.
 
 def temperature(unit, number):
     global conversion 
@@ -19,14 +19,14 @@ def temperature(unit, number):
         roundedConversion = round(conversion, 2)
         print(str(roundedConversion) + ' lbs')
         return True
-    #converts the temperature from Celcius to Fahrenheit and rounds it to the nearest 2 decimal places
+    #converts the weight from Kilograms to Pounds and rounds it to the nearest 2 decimal places
     
     if unit == 'lb':
         conversion = number / 2.2
         roundedConversion = round(conversion, 2)
         print(str(roundedConversion) + ' kg')
         return True
-    #converts the temperature given from Fahrenheit to Celcius and rounds it to the nearest 2 decimal places
+    #converts the temperature given from Pounds to Kilograms and rounds it to the nearest 2 decimal places
         
 def speed(unit, number):
     if unit == 'm':
@@ -34,14 +34,14 @@ def speed(unit, number):
         roundedConversion = round(conversion, 2)
         print(str(roundedConversion) + ' ft')
         return
-    #converts from KPH to MPH and rounds to the nearest 2 decimal places
+    #converts from Meters to Feet and rounds to the nearest 2 decimal places
     
     if unit == 'ft':
         conversion = number * 0.304
         roundedConversion = round(conversion, 2)
         print(str(roundedConversion) + ' m')
         return
-    #converts from MPH to KPH and rounds to the nearest 2 decimal places
+    #converts from feet to meters and rounds to the nearest 2 decimal places
 
 while True:
     try:
@@ -49,8 +49,8 @@ while True:
         if decision in range(1, 3):
             break
     except ValueError:
-        pass
-    print('Please enter a valid value: ')
+        print('Please enter a valid value: ')
+    #program will only let the user input 1 or 2
 
 #program starts here with asking the user if they want to convert a temperature or a speed
 
@@ -67,7 +67,7 @@ if decision == 1:
             break
         except ValueError:
             print('Invalid entry. Try again: ')
-        
+        #program will catch any errors and have the user input a proper value
     
     
 #if the user chooses to convert a temperature, the program will ask for which unit they are converting, and what the temperature is
@@ -86,7 +86,7 @@ if decision == 2:
             break
         except ValueError:
             print('Please enter a valid value: ')
-        
+        #program will loop until user enters a valid value. It will also not let the user enter in a value of 0 or lower
     
 #if the user chooses to convert a speed, the program will ask for which unit they are converting and what the speed is. 
 #it will then call the function to do the conversion and then print it for the user
