@@ -52,7 +52,7 @@ while True:
         print('Please enter a valid value: ')
     #program will only let the user input 1 or 2
 
-#program starts here with asking the user if they want to convert a temperature or a speed
+#program starts here with asking the user if they want to convert a weight or a length
 
 if decision == 1:
     unit = input("What is the unit you are converting from? 'KG' for Kilograms or 'LB' for Pounds:  ").strip().lower()
@@ -70,7 +70,7 @@ if decision == 1:
         #program will catch any errors and have the user input a proper value
     
     
-#if the user chooses to convert a temperature, the program will ask for which unit they are converting, and what the temperature is
+#if the user chooses to convert a weight, the program will ask for which unit they are converting, and what the weight is
 #it will then call the function to do the conversion and then print it for the user
 
 if decision == 2:
@@ -88,5 +88,5 @@ if decision == 2:
             print('Please enter a valid value: ')
         #program will loop until user enters a valid value. It will also not let the user enter in a value of 0 or lower
     
-#if the user chooses to convert a speed, the program will ask for which unit they are converting and what the speed is. 
+#if the user chooses to convert length, the program will ask for which unit they are converting and what the length is. 
 #it will then call the function to do the conversion and then print it for the user
